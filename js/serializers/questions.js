@@ -70,11 +70,7 @@ define([
                     var hasUserAnswer = (component['_userAnswer'] !== undefined);
                     var isUserAnswerArray = (component['_userAnswer'] instanceof Array);
 
-                    if (hasUserAnswer && isUserAnswerArray && component['_userAnswer'].length === 0) {
-                        hasUserAnswer = false;
-                        isUserAnswerArray = false;
-                    }
-                    
+
                     var numericParameters = [
                             blockLocation,
                             block['_trackingId'],
