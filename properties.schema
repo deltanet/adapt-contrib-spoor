@@ -58,11 +58,20 @@
                       "help": "If set to true, the score attained in any assessment will be reported back to the LMS (regardless of whether the user passes or fails the assessment)."
                     },
                     "_shouldStoreResponses": {
-                      "type":"boolean",
-                      "required":false,
-                      "default": "false",
-                      "title":"Store responses",
-                      "inputType": {"type": "Boolean", "options": [true, false]},
+                      "type": "boolean",
+                      "required": false,
+                      "default": true,
+                      "title": "Store question state",
+                      "inputType": "Checkbox",
+                      "validators": [],
+                      "help": "If enabled, the user's responses to questions will be saved and restored in each session. Note: this setting should be enabled in the majority of cases."
+                    },
+                    "_shouldRecordInteractions": {
+                      "type": "boolean",
+                      "required": false,
+                      "default": true,
+                      "title": "Record interactions",
+                      "inputType": "Checkbox",
                       "validators": [],
                       "help": "If set to true, the user's question responses will be saved to the LMS."
                     }
