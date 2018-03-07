@@ -30,7 +30,7 @@ define([
 				});
 
 				suspendDataRestored = true;
-				
+
 				return data;
 			}
 
@@ -90,7 +90,7 @@ define([
 					scorm.setLanguage(value);
 					// fall-through so that lang gets stored in suspend_data as well:
 					// because in SCORM 1.2 cmi.student_preference.language is an optional data element
-					// so we can't rely on the LMS having support for it. 
+					// so we can't rely on the LMS having support for it.
 					// If it does support it we may as well save the user's choice there purely for reporting purposes
 				case "suspenddata":
 				default:
@@ -121,10 +121,10 @@ define([
 			var dataAsJSON = this.getCustomStates();
 			return dataAsJSON[name];
 		},
-		
+
 		useTemporaryStore: function() {
 			var cfg = Adapt.config.get('_spoor');
-			
+
 			if (!scorm.lmsConnected || (cfg && cfg._isEnabled === false)) return true;
 			return false;
 		},
@@ -147,6 +147,12 @@ define([
 				name = firstname + " " + lastname;
 			} else {
 				console.log("SPOOR: LMS learner_name not in 'lastname, firstname' format");
+				// first name first, space separated
+				console.log("SPOOR: LMS learner_name changed to 'firstname lastname' format");
+				var nameSplit = name.split(" ");
+				firstname = $.trim(nameSplit[0]);
+				lastname = $.trim(nameSplit[1]);
+				name = firstname + " " + lastname;
 			}
 			return {
 				name: name,
@@ -155,7 +161,7 @@ define([
 				id: scorm.getStudentId()
 			};
 		}
-		
+
 	});
 
 });
