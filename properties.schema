@@ -191,7 +191,7 @@
                 "identifier": {
                   "type": "string",
                   "required": false,
-                  "default": "",
+                  "default": "adapt_manifest",
                   "title": "SCO Identifier Reference",
                   "inputType": "Text",
                   "validators": [],

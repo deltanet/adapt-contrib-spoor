@@ -25,6 +25,7 @@
 			"_maxCommitRetries": 5,
 			"_commitRetryDelay": 2000,
 			"_commitOnVisibilityChangeHidden": true
-		}
+		},
+		"identifier": "sco-v1.0.0"
 	}
 }
