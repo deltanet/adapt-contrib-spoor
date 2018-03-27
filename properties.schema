@@ -187,6 +187,15 @@
                       "help": "If enabled, a 'commit' call will be made whenever the course window is hidden/minimised. Requires a browser that supports the 'visibilitychange' event."
                     }
                   }
+                },
+                "identifier": {
+                  "type": "string",
+                  "required": false,
+                  "default": "",
+                  "title": "SCO Identifier Reference",
+                  "inputType": "Text",
+                  "validators": [],
+                  "translatable": false
                 }
               }
             }
