@@ -97,6 +97,8 @@ The attributes listed below are used in *config.json* to configure **Spoor**, an
 
 >>**_commitOnVisibilityChangeHidden** (boolean): Determines whether or not a "commit" call should be made when the [visibilityState](https://developer.mozilla.org/en-US/docs/Web/API/Document/visibilityState) of the course page changes to `"hidden"`. This functionality helps to ensure that tracking data is saved whenever the user switches to another tab or minimises the browser window - and is only available in [browsers that support the Page Visibility API](http://caniuse.com/#search=page%20visibility). The default is `true`.
 
+>>**identifier** (string): Specifies the manifest identifier in the file imsmanifest.xml. The default is `adapt_manifest`.
+
 <div float align=right><a href="#top">Back to Top</a></div>  
 
 ### Running a course without tracking while Spoor is installed  
