@@ -190,11 +190,11 @@
                 },
                 "identifier": {
                   "type": "string",
-                  "required": false,
-                  "default": "adapt_manifest",
+                  "required": true,
+                  "default": "",
                   "title": "SCO Identifier Reference",
                   "inputType": "Text",
-                  "validators": [],
+                  "validators": ["required"],
                   "translatable": false
                 }
               }
