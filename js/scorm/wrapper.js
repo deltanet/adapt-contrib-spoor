@@ -162,6 +162,9 @@ define (function(require) {
 			case "not_attempted":// mentioned in SCORM 2004 docs but not sure it ever gets used
 			case "unknown": //the SCORM 2004 version of not attempted
 				return status;
+			case "": //Hack for Metacompliance LMS. Metacompliance please make your LMS conformant with SCORM 1.2 !!!!!!!
+				console.log('Non SCORM 1.2 LMS detected. LMS returned empty string for cmi.completion_status, this is NOT SCORM 1.2 compliant. Assuming not attempted.')
+				return "not attempted";
 			default:
 				this.handleError("ScormWrapper::getStatus: invalid lesson status '" + status + "' received from LMS");
 				return null;
