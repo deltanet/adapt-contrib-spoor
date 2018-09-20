@@ -196,6 +196,15 @@
                   "inputType": "Text",
                   "validators": ["required"],
                   "translatable": false
+                },
+                "archerURI": {
+                  "type": "string",
+                  "required": true,
+                  "default": "",
+                  "title": "Archer completion URI",
+                  "inputType": "Text",
+                  "validators": ["required"],
+                  "translatable": false
                 }
               }
             }

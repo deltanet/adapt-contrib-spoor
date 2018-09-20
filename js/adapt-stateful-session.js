@@ -5,7 +5,7 @@ define([
 ], function(Adapt, serializer, questions) {
 
 	//Implements Adapt session statefulness
-	
+
 	var AdaptStatefulSession = _.extend({
 
 		_config: null,
@@ -15,11 +15,11 @@ define([
 	//Session Begin
 		initialize: function(callback) {
 			this._onWindowUnload = _.bind(this.onWindowUnload, this);
-			
+
 			this.getConfig();
 
 			this.getLearnerInfo();
-			
+
 			// restore state asynchronously to prevent IE8 freezes
 			this.restoreSessionState(_.bind(function() {
 				// still need to defer call because AdaptModel.check*Status functions are asynchronous
@@ -30,9 +30,9 @@ define([
 
 		getConfig: function() {
 			this._config = Adapt.config.has('_spoor') ? Adapt.config.get('_spoor') : false;
-			
+
 			this._shouldStoreResponses = (this._config && this._config._tracking && this._config._tracking._shouldStoreResponses);
-			
+
 			// default should be to record interactions, so only avoid doing that if _shouldRecordInteractions is set to false
 			if (this._config && this._config._tracking && this._config._tracking._shouldRecordInteractions === false) {
 				this._shouldRecordInteractions = false;
@@ -129,13 +129,27 @@ define([
 			if (!this.checkTrackingCriteriaMet()) return;
 
 			this.saveSessionState();
-			
+
 			Adapt.offlineStorage.set("status", this._config._reporting._onTrackingCriteriaMet);
+
+			// Do archer handshake here ????
+			this.archerHandshake();
+		},
+
+		archerHandshake: function() {
+			$.ajax({
+				url: this._config.archerURI,
+				status: "completed"
+			}).done(function() {
+				console.log('Archer completion called.');
+			}).fail(function() {
+		    console.error( "Archer completion call failed" );
+		  });
 		},
 
 		onAssessmentComplete: function(stateModel) {
 			Adapt.course.set('_isAssessmentPassed', stateModel.isPass);
-			
+
 			this.saveSessionState();
 
 			this.submitScore(stateModel);
@@ -157,7 +171,7 @@ define([
 			var response = questionView.getResponse();
 			var result = questionView.isCorrect();
 			var latency = questionView.getLatency();
-			
+
 			Adapt.offlineStorage.set("interaction", id, response, result, latency, responseType);
 		},
 
@@ -171,7 +185,7 @@ define([
 			this.reattachEventListeners();
 
 			this.saveSessionState();
-			
+
 			if (this._config._reporting && this._config._reporting._resetStatusOnLanguageChange === true) {
 				Adapt.offlineStorage.set("status", "incomplete");
 			}
@@ -191,11 +205,11 @@ define([
 			if (this._config && this._config._reporting.hasOwnProperty("_onAssessmentFailure")) {
 				var onAssessmentFailure = this._config._reporting._onAssessmentFailure;
 				if (onAssessmentFailure === "") return;
-					
+
 				Adapt.offlineStorage.set("status", onAssessmentFailure);
 			}
 		},
-		
+
 		checkTrackingCriteriaMet: function() {
 			var criteriaMet = false;
 
@@ -218,7 +232,7 @@ define([
 		onWindowUnload: function() {
 			this.removeEventListeners();
 		}
-		
+
 	}, Backbone.Events);
 
 	return AdaptStatefulSession;

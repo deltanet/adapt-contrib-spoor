@@ -99,6 +99,8 @@ The attributes listed below are used in *config.json* to configure **Spoor**, an
 
 >>**identifier** (string): Specifies the manifest identifier in the file imsmanifest.xml. The default is `adapt_manifest`.
 
+>>**archerURI** (string): Specifies the URL for the RSA Archer completion call.
+
 <div float align=right><a href="#top">Back to Top</a></div>  
 
 ### Running a course without tracking while Spoor is installed  
