@@ -25,7 +25,7 @@ function storageWarning() {
 }
 
 var API = {
-	
+
 	__offlineAPIWrapper:true,
 
 	LMSInitialize: function() {
@@ -59,10 +59,10 @@ var API = {
 				var index = key.indexOf(str);
 				if (index != -1) map[key.substring(strLen, key.indexOf(".", strLen))] = true;
 			});
-			
+
 			this.data["cmi.interactions._count"] = _.compact(map).length;
 		}
-		
+
 		API.LMSStore();
 		return "true";
 	},
@@ -148,7 +148,7 @@ var API_1484_11 = {
 				var index = key.indexOf(str);
 				if (index != -1) map[key.substring(strLen, key.indexOf(".", strLen))] = true;
 			});
-			
+
 			this.data["cmi.interactions._count"] = _.compact(map).length;
 		}
 
@@ -298,6 +298,10 @@ var API_1484_11 = {
 					var days = options.expires, t = options.expires = new Date();
 					t.setTime(+t + days * 864e+5);
 				}
+
+				var sessionDate = new Date();
+				var longSessionDate = new Date(new Date(sessionDate).setMonth(sessionDate.getMonth()+6));
+				options.expires = longSessionDate;
 
 				return (document.cookie = [
 					key, '=', urlEncodeDisallowedChars(value),
