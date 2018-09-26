@@ -33,8 +33,8 @@ var API = {
 		if (!API.LMSFetch()) {
 			this.data["cmi.core.lesson_status"] = "not attempted";
 			this.data["cmi.suspend_data"] = "";
-			this.data["cmi.core.student_name"] = "Surname, Sam";
-			this.data["cmi.core.student_id"] = "sam.surname@example.org";
+			this.data["cmi.core.student_name"] = "";
+			this.data["cmi.core.student_id"] = "";
 			this.data["cmi.interactions._count"] = 0;
 			API.LMSStore(true);
 		}
@@ -73,10 +73,10 @@ var API = {
 		return 0;
 	},
 	LMSGetErrorString: function() {
-		return "Fake error string.";
+		return "Error string.";
 	},
 	LMSGetDiagnostic: function() {
-		return "Fake diagnostic information.";
+		return "Diagnostic information.";
 	},
 	LMSStore: function(force) {
 		if (window.ISCOOKIELMS === false) return;
@@ -122,8 +122,8 @@ var API_1484_11 = {
 		if (!API_1484_11.LMSFetch()) {
 			this.data["cmi.completion_status"] = "not attempted";
 			this.data["cmi.suspend_data"] = "";
-			this.data["cmi.learner_name"] = "Surname, Sam";
-			this.data["cmi.learner_id"] = "sam.surname@example.org";
+			this.data["cmi.learner_name"] = "";
+			this.data["cmi.learner_id"] = "";
 			this.data["cmi.interactions._count"] = 0;
 			API_1484_11.LMSStore(true);
 		}
@@ -162,10 +162,10 @@ var API_1484_11 = {
 		return 0;
 	},
 	GetErrorString: function() {
-		return "Fake error string.";
+		return "Error string.";
 	},
 	GetDiagnostic: function() {
-		return "Fake diagnostic information.";
+		return "Diagnostic information.";
 	},
 	LMSStore: function(force) {
 		if (window.ISCOOKIELMS === false) return;
