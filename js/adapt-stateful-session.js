@@ -129,66 +129,7 @@ define([
 			if (!this.checkTrackingCriteriaMet()) return;
 
 			this.saveSessionState();
-			this.archerXhrHandshake();
 			Adapt.offlineStorage.set("status", this._config._reporting._onTrackingCriteriaMet);
-
-			// Do archer handshake here ????
-			//this.archerHandshake();
-		},
-
-		archerAjaxHandshake: function() {
-			$.ajax({
-				url: this._config.archerURI,
-				crossDomain: true
-			}).done(function() {
-				console.log('Archer completion called.');
-			}).fail(function() {
-		    console.error( "Archer completion call failed" );
-		  });
-		},
-
-		archerXhrHandshake: function() {
-			// This is a sample server that supports CORS.
-		  var url = this._config.archerURI;
-
-			if (typeof url == "undefined") {
-				console.error('Archer URL not defined');
-			}
-
-		  var xhr = this.createCORSRequest('GET', url);
-		  if (!xhr) {
-		    console.log('CORS not supported');
-		    return;
-		  }
-
-		  // Response handlers.
-		  xhr.onload = function() {
-		    var text = xhr.responseText;
-		    console.log('Response from CORS request to ' + url + ': ' + text);
-		  };
-
-		  xhr.onerror = function() {
-		    console.log('There was an error making the request.');
-		  };
-
-		  xhr.send();
-		},
-
-		// Create the XHR object.
-		createCORSRequest: function(method, url) {
-		  var xhr = new XMLHttpRequest();
-		  if ("withCredentials" in xhr) {
-		    // XHR for Chrome/Firefox/Opera/Safari.
-		    xhr.open(method, url, true);
-		  } else if (typeof XDomainRequest != "undefined") {
-		    // XDomainRequest for IE.
-		    xhr = new XDomainRequest();
-		    xhr.open(method, url);
-		  } else {
-		    // CORS not supported.
-		    xhr = null;
-		  }
-		  return xhr;
 		},
 
 		onAssessmentComplete: function(stateModel) {
