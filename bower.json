@@ -1,12 +1,12 @@
 {
   "name": "adapt-contrib-spoor",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "framework": ">=3.5.0",
   "homepage": "https://github.com/deltanet/adapt-contrib-spoor",
   "issues": "https://github.com/deltanet/adapt-contrib-spoor/issues",
-  "displayName" : "Spoor",
+  "displayName" : "SCORM",
   "extension" : "spoor",
-  "description": "An extension which allows basic SCORM tracking",
+  "description": "An extension which allows basic SCORM 1.2 tracking",
   "main": "/js/adapt-contrib-spoor.js",
   "keywords": [
     "adapt-plugin",
