@@ -80,7 +80,7 @@ The attributes listed below are used in *config.json* to configure **Spoor**, an
 
 >>**_commitOnStatusChange** (boolean): Determines whether a "commit" call should be made automatically every time the SCORM *lesson_status* is changed. The default is `true`.  
 
->>**_timedCommitFrequency** (number): Specifies the frequency - in minutes - at which a "commit" call will be made. Set this value to `0` to disable automatic commits. The default is `10`.  
+>>**_timedCommitFrequency** (number): Specifies the frequency - in minutes - at which a "commit" call will be made. Set this value to `0` to disable automatic commits. The default is `1`.  
 
 >>**_maxCommitRetries** (number): If a "commit" call fails, this setting specifies how many more times the "commit" call will be attempted before giving up and throwing an error. The default is `5`.  
 
