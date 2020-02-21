@@ -22,8 +22,8 @@
 			"_timedCommitFrequency": 10,
 			"_maxCommitRetries": 5,
 			"_commitRetryDelay": 2000,
-			"_commitOnVisibilityChangeHidden": true
-		},
-		"identifier": "sco-v1.0.0"
+			"_commitOnVisibilityChangeHidden": true,
+			"_manifestIdentifier": "adapt_manifest"
+		}
 	}
 }
