@@ -2,8 +2,9 @@ define([
     'core/js/adapt',
     './scorm',
     './adapt-stateful-session',
+    './lms-error-view',
     './adapt-offlineStorage-scorm'
-], function(Adapt, scorm, adaptStatefulSession) {
+], function(Adapt, scorm, adaptStatefulSession, lmsErrorView) {
 
     //SCORM session manager
 
@@ -11,14 +12,19 @@ define([
 
         _config: null,
 
-    //Session Begin
+        //Session Begin
 
         initialize: function() {
+            this.popupView = null;
             this.listenToOnce(Adapt, {
                 'offlineStorage:prepare': this.onPrepareOfflineStorage,
                 'app:dataReady': function() {
                     Adapt.wait.for(adaptStatefulSession.initialize.bind(adaptStatefulSession));
                 }
+            });
+
+            this.listenTo(Adapt, {
+                'pageView:ready': this.checkLmsConnected,
             });
         },
 
@@ -121,6 +127,31 @@ define([
 
         onVisibilityChange: function() {
             if (document.visibilityState === "hidden") scorm.commit();
+        },
+
+        checkLmsConnected: function() {
+          if (scorm.lmsConnected || this.courseLocked) return;
+          var spoorSettings = Adapt.config.get('_spoor');
+          var advancedSettings = spoorSettings._advancedSettings;
+          if (!advancedSettings._continueOnLMSError) {
+
+            this.popupView = new lmsErrorView({
+                model: {
+                  title: "Error",
+                  body: "An error has occured: the course lost connection to the LMS and your progress will no longer be recorded.\n\nPlease relaunch the course from the LMS to reconnect and make sure your progress is saved."
+                }
+            });
+
+            this.courseLocked = true;
+            // open non closable _notify
+            Adapt.trigger("notify:popup", {
+                _view: this.popupView,
+                _isCancellable: false,
+                _showCloseButton: false,
+                _closeOnBackdrop: false,
+                _classes: 'spoor-lms-error'
+            });
+          }
         },
 
     //Session End

@@ -115,6 +115,15 @@
                       "validators": [],
                       "help": "If enabled, a popup window will be shown on course launch that gives detailed information about what SCORM calls are being made. This can be very useful for debugging SCORM issues. Note that this popup window will appear automatically if the SCORM code encounters an error, even if this is set to false."
                     },
+                    "_continueOnLMSError": {
+                      "type": "boolean",
+                      "required": false,
+                      "default": false,
+                      "title": "Continue on LMS Error",
+                      "inputType": "Checkbox",
+                      "validators": [],
+                      "help": "If disabled, checks if the SCORM wrapper can connect to the LMS. If it cannot a notify alert will be shown on course launch that prevents the user from continuing. By default this is set to false which allow the user to continue."
+                    },
                     "_commitOnStatusChange": {
                       "type": "boolean",
                       "required": false,
