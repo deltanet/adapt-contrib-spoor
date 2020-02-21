@@ -1,9 +1,9 @@
 {{! make the _globals object in course.json available to this template}}
 {{import_globals}}
 <div id="notify-heading" class="notify-popup-title">
-	<div class="notify-popup-title-inner h2" role="heading" aria-level="1">
+	<div class="notify-popup-title-inner h1" role="heading" aria-level="1">
 		{{{compile title}}}
 	</div>
 </div>
-<div role="heading" class="h3" aria-level="1">{{{compile body}}}</div>
+<div class="notify-popup-body" aria-level="1">{{{compile body}}}</div>
 {{a11y_wrap_focus}}

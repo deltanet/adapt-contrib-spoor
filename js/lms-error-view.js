@@ -4,7 +4,7 @@ define([
 
     var LmsErrorView = Backbone.View.extend({
 
-        className: "spoor-lms-error",
+        className: "spoor-lms-error-popup",
 
         initialize: function() {
           this.render();
