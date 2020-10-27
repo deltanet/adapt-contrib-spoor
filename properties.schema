@@ -14,7 +14,7 @@
             "_spoor": {
               "type": "object",
               "required": false,
-              "legend": "Spoor",
+              "legend": "SCORM",
               "properties": {
                 "_isEnabled": {
                   "type": "boolean",
@@ -145,7 +145,7 @@
                     "_timedCommitFrequency": {
                       "type": "number",
                       "required": false,
-                      "default": "10",
+                      "default": "1",
                       "title": "Frequency (mins) of automatic commits",
                       "inputType": "Number",
                       "validators": ["number"],

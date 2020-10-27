@@ -2,10 +2,10 @@
   "name": "adapt-contrib-spoor",
   "version": "3.5.0",
   "framework": ">=5.5",
-  "homepage": "https://github.com/adaptlearning/adapt-contrib-spoor",
-  "issues": "https://github.com/adaptlearning/adapt_framework/issues/new",
+  "homepage": "https://github.com/deltanet/adapt-contrib-spoor",
+  "issues": "https://github.com/deltanet/adapt-contrib-spoor/issues",
   "extension" : "spoor",
-  "displayName" : "Spoor",
+  "displayName" : "SCORM",
   "description": "An extension which allows basic SCORM tracking",
   "main": "/js/adapt-contrib-spoor.js",
   "keywords": [
